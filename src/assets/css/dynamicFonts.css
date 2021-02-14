@@ -1,0 +1,56 @@
+/* dynamic fonts */
+
+.eng-font-larrseit-light{
+    font-family: "larsseit-light";
+ }
+ 
+
+ 
+ .geofont-mtavruli{
+   font-family: "bpg-nateli-mtavruli";
+ }
+ 
+ .eng-font-larrseit-thin{
+    font-family: "larsseit-light";
+ }
+ 
+ .geofont-arial-regular{
+   font-family: "bpg-arial-regular" !important;
+   }
+
+  .bpg-nateli-reg{
+      font-family: "bpg-nateli-regular";
+  }
+
+  .larseit-thinLight-italic{
+    font-family: "larseit-thinLight-italic";
+  }
+ 
+ .eng-font-larrseit-light{
+     font-family: "larsseit-light";
+ }
+
+ .larrseit-thin-italic{
+   font-family: "larsseit-thinitalic";
+ }
+
+ .bpg-rioni-regular{
+   font-family: "bpg-rioni-regular";
+ }
+
+ .calson-medium{
+   font-family: "caslon-medium";
+ }
+
+ .dynamiccolor{
+   color: #4A4A4A !important;
+   text-shadow: unset !important;
+}
+
+.eng-larsseit-thin{
+   font-family: "larsseit-thin";
+}
+
+.geofont-arial-caps{
+  font-family: "bpg-arial-caps" !important;
+}

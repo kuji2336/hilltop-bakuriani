@@ -1,0 +1,24 @@
+{
+    "home": "меню",
+    "room-types": "типы номеров",
+    "services": "Сервисы",
+    "about": "о нас",
+    "blog": "блог",
+    "contact": "контакт",
+    "published_at":"опубликовано",
+    "section-headers": {
+        "room-types": "типы номеров",
+        "room-price": "цена",
+        "room-capacity": "вместимость",
+        "view-galery": "галерея",
+        "about-sect": "о нас",
+        "blog": "блог",
+        "read-more":"увидеть больше",
+        "contact": "контакт",
+        "phone":"Телефон",
+        "email":"почта",
+        "address":"почта",
+        "load-more":"Загрузи"
+
+    }
+}

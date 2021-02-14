@@ -1,0 +1,23 @@
+{
+    "home": "HOME",
+    "room-types": "ROOM TYPES",
+    "services": "SERVICES",
+    "about": "ABOUT US",
+    "blog": "BLOG",
+    "contact": "CONTACT",
+    "published_at":"published",
+    "section-headers": {
+        "room-types": "ROOM TYPES",
+        "room-price": "PRICE",
+        "room-capacity": "PERSON",
+        "view-galery": "View Gallery",
+        "about-sect": "ABOUT US",
+        "blog": "BLOG",
+        "read-more":"Read More",
+        "load-more":"Load more",
+        "contact": "CONTACT",
+        "phone":"PHONE",
+        "email":"EMAIL",
+        "address":"ADDRESS"
+    }
+}

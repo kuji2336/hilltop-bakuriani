@@ -1,0 +1,24 @@
+{
+    "home": "მენიუ",
+    "room-types": "ოთახის ტიპები",
+    "services": "სერვისები",
+    "about": "ჩვენს შესახებ",
+    "blog": "ბლოგი",
+    "contact": "კონტაქტი",
+    "published_at":"გამოქვეყნებულია",
+    "section-headers": {
+        "room-types": "ოთახის ტიპები",
+        "room-price": "ფასი",
+        "room-capacity": "პერსონა",
+        "view-galery": "გალერეა",
+        "about-sect": "ჩვენს შესახებ",
+        "blog": "ბლოგი",
+        "read-more":"ნახე ვრცლად",
+        "contact": "კონტაქტი",
+        "phone":"ტელეფონი",
+        "email":"ფოსტა",
+        "address":"მისამართი",
+        "load-more":"მეტის ნახვა"
+
+    }
+}
