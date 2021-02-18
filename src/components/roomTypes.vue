@@ -559,8 +559,7 @@ export default {
   }
 
   .room-type-description {
-    max-width: 280px;
-    width: 100%;
+    max-width: 89%;
     position: absolute;
     background-color: white;
     padding: 20px 15px 0 16px;

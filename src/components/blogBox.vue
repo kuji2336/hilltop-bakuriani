@@ -280,6 +280,7 @@ export default {
     position: unset;
   }
 
+
   .blog-box__image img {
     object-fit: contain;
 }

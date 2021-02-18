@@ -180,7 +180,7 @@ setup(){
  }
 
  .blog-left-side{
-     height: 888px;
+     height: 100%;
      img{
          height: 100%;
          width: 100%;
@@ -201,13 +201,13 @@ setup(){
  }
 
  .blog-left-side{
-     flex: 0 0 60%;
-     max-width: 60%;
+     flex: 0 0 70%;
+     max-width: 70%;
  }
 
  .blog-right-side{
-     flex: 0 0 40%;
-     max-width: 40%;
+     flex: 0 0 30%;
+     max-width: 30%;
  }
 
 
@@ -226,6 +226,7 @@ setup(){
     right: 70px;
     max-height: 400px;
     overflow: auto;
+    scroll-behavior: smooth;
     p{
         color: #464646;
         line-height: 24px;
@@ -288,6 +289,22 @@ setup(){
      margin-left: 20px;
      max-width: 600px;
      width: 100%;
+ }
+
+ @media(max-width:1900px){
+      .blog-left-side{
+     height: 888px;
+ }
+
+  .blog-left-side{
+     flex: 0 0 60%;
+     max-width: 60%;
+ }
+
+ .blog-right-side{
+     flex: 0 0 40%;
+     max-width: 40%;
+ }
  }
 
 

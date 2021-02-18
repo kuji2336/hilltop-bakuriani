@@ -43,7 +43,7 @@
 
 
   <room-types></room-types>
-  <div id="services">
+  <div id="services" class="services-wrapper">
      <main-services></main-services>
   </div>
   <about-us></about-us>
@@ -152,6 +152,12 @@ export default {
 
 body{
   counter-reset: my-sec-counter;
+}
+
+.services-wrapper{
+  max-width: 1900px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .container-main-slider {
