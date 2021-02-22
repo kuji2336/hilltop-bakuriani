@@ -14,6 +14,7 @@ children:[
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    //@desc scroll down after navigating from blog page
     scrollBehavior(to, from) {
         if (to.name === "blogdetail") {
           return {

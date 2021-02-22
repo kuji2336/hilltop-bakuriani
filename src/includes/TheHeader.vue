@@ -18,7 +18,7 @@
                  <a class="page-link" href="#roomTypes">{{t('room-types', {}, {locale:translateLanguage})}}</a>
               </li>
               <li class="nav-link">
-                  <a class="page-link" href="#services" >{{t('services', {}, {locale:translateLanguage})}}</a>
+                  <a class="page-link" href="#services" ><span>{{t('services', {}, {locale:translateLanguage})}}</span></a>
               </li>
               <li class="nav-link">
                  <a class="page-link" href="#aboutUs">{{t('about', {}, {locale:translateLanguage})}}</a>
@@ -46,6 +46,7 @@
   </div>
   <!-- mobile header menu -->
   <header-mob></header-mob>
+  
 </template>
 
 
@@ -82,7 +83,6 @@ export default {
       return{
          'geofont-arial-caps': this.translateLanguage === "ka" || this.translateLanguage === "ru",
          'eng-font-larrseit-light': this.translateLanguage === "en",
-         "text-bold": this.translateLanguage === "en"
        }
     },
   },
@@ -180,7 +180,7 @@ export default {
          } 
        });
     
-  },
+     },
 
 
   updatePageLanguage(){
@@ -215,12 +215,10 @@ watch:{
        if(to.name === "blogdetail"){
          window.removeEventListener("scroll", this.contorlSections);
          window.removeEventListener("scroll", this.setActiveClassOnScroll);
-         this.$refs.myblog.style.fontFamily = "larsseit-medium";
          this.$refs.myblog.style.borderBottom = "2px solid #56D9D4";
        }
        else{
           window.addEventListener("scroll", this.contorlSections);
-          this.$refs.myblog.style.fontFamily = "";
           this.$refs.myblog.style.borderBottom = "";
           this.setActiveClassOnLoad();
           window.addEventListener("scroll", this.setActiveClassOnScroll);
@@ -251,18 +249,18 @@ unmounted(){
 }
 .emphazised{
     border-bottom: 2px solid #56D9D4 ;
-    font-family: "larsseit-medium" !important;
 }
+
 
 .page-link:hover{
    border-bottom: 2px solid #56D9D4;
-   font-family: "larsseit-medium";
-   transition: 0.4 ease-in-out;
+   transition: 0.4s;
 }
 
-.page-link:hover{
-   transition: 0.4 ease-in;
+.page-link{
+  border-bottom: 2px solid #56d9d500;
 }
+
 
 
 .class-none{
@@ -426,10 +424,7 @@ unmounted(){
 
 .home-btn span:hover{
    border-bottom: 2px solid #56D9D4 ;
-   font-family: "larsseit-medium" ;
 }
 
-.text-bold{
-font-family: "larsseit-medium" !important;
-}
+
 </style>

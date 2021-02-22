@@ -165,6 +165,8 @@ export default {
 
    .about-us {
    margin-top: unset;
+   position: relative;
+   top: -105px;
    }
   
   .about-header h1 {

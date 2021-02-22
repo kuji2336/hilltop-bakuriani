@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from "@/store/store"
 import router from "./router/router"
+//translation plugin
 import { createI18n } from 'vue-i18n'
 import geo from "./translations/geo.json"
 import eng from "./translations/eng.json"
@@ -18,5 +19,5 @@ const i18n = createI18n({
 const app = createApp(App);
 app.use(router);
 app.use(store);
-app.use(i18n)
+app.use(i18n);
 app.mount('#app');

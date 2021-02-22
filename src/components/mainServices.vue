@@ -7,7 +7,7 @@
             :slides-per-view="1"  :space-between="20" :pagination="{ clickable: true,  }">
               <swiper-slide v-for="image in serviceData.images" :key="image.id">
                  <div class="swiper-slider-main-img">
-                      <img :src="image.image.full_size" />
+                      <img :src="image.image.full_size" :alt="serviceData.title" :title="serviceData.title" />
                  </div>
               </swiper-slide>
           </swiper>
@@ -40,11 +40,7 @@ export default {
     SwiperSlide,
   },
   methods: {
-     ...mapActions("services", ["RecieveServicesAPI"]),
-    onSlideChange() {
-      console.log("slide change");
-    },
-
+    ...mapActions("services", ["RecieveServicesAPI"]),
     getServices(){
        this.RecieveServicesAPI()
     },
@@ -257,17 +253,17 @@ export default {
 }
 
 .slider-left-content:nth-child(2n) .d-flex .side-text .slider-text-left__inner{
-    max-width: 330px;
-    width: 100%;
-    margin: 0 auto;
+    max-width: 90%;
+    left: 8%;
+    position: relative;
     max-height: unset;
     overflow: hidden;
 }
 
 .slider-left-content:nth-child(odd) .d-flex .side-text .slider-text-left__inner{
-    max-width: 330px;
-    width: 100%;
-    margin: 0 auto;
+    max-width: 90%;
+    left: 8%;
+    position: relative;
     max-height: unset;
    overflow: hidden;
 }

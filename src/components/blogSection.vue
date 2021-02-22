@@ -71,6 +71,8 @@ export default {
   },
 
   methods: {
+
+    //load additional blogs from previous link
     async loadMore() {
       this.state = "loading";
       this.error = undefined;
@@ -196,8 +198,12 @@ export default {
 
 @media (max-width: 576px) {
   .section-header--blogs {
-    margin-bottom: unset;
+    margin-bottom: 16px;
   }
+
+  .blogs {
+    margin-top: 34px;
+}
 
   .section-header--blogs h1 {
     font-size: 20px;
@@ -211,7 +217,7 @@ export default {
   .load-more-btn {
     padding-top: unset;
     position: relative;
-    top: 45px;
+    top: 28px;
   }
 }
 </style>

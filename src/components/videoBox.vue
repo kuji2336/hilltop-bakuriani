@@ -1,6 +1,6 @@
 <template>
 <transition>
-  <div class="dynamic-video-box" :class="{'scale-out-br':VideoIsVisiable}">
+  <div class="dynamic-video-box" :class="{'scale-out-bottom':VideoIsVisiable}">
     <div class="video-box__inner">
       <div class="img-close" @click="hideVideo">
         <img :src="require(`@/assets/img/iconclose.svg`)" />
@@ -9,7 +9,7 @@
           <input type="checkbox" value="None" id="playpause" name="check"  @click="playVideo"/>
           <label for="playpause" :class="{'buttonVisibility': giveOpactiy}"></label>
         </div>
-      <video controls  :class="{'resize-video':VideoIsVisiable}" id="video">
+      <video controls :class="{'decrease-with':VideoIsVisiable}" id="video">
         <source :src="require(`@/assets/img/test.mp4`)" />
       </video>
     </div>
@@ -66,11 +66,52 @@ export default {
   right: 0;
   transform: translate(-13%, -50%);
 }
+.scale-out-bottom {
+	-webkit-animation: scale-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: scale-out-bottom 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@-webkit-keyframes scale-out-bottom {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 88% 140%;
+    transform-origin: 88% 140%;
+    opacity: 0.1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 88% 140%;
+    transform-origin: 88% 140%;
+    opacity: 0.1;
+  }
+}
+@keyframes scale-out-bottom {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 88% 140%;
+    transform-origin: 88% 140%;
+    opacity: 0.1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 88% 140%;
+    transform-origin: 88% 140%;
+    opacity: 0;
+  }
+}
 
 .video-box__inner {
   background: #ffffff 0% 0% no-repeat padding-box;
   padding: 14px;
   position: relative;
+}
+
+.decrease-with{
+  width: 23rem;
 }
 
 .buttonVisibility{
@@ -103,43 +144,7 @@ video {
 /* animation  */
 
 
-.scale-out-br {
-	-webkit-animation: scale-out-br 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	animation: scale-out-br 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
 
-@-webkit-keyframes scale-out-br {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    -webkit-transform-origin: 88% 88%;
-    transform-origin: 88% 88%;
-    opacity: 1;
-  }
-}
-@keyframes scale-out-br {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transform-origin: 100%  100% ;
-    transform-origin: 100%  100% ;
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    -webkit-transform-origin: 88% 88%;
-    transform-origin: 88% 88%;
-    opacity: 1;
-  }
-}
 
 .playpause label {
   display: block;

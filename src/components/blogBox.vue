@@ -4,7 +4,7 @@
     <div class="blog-box" v-for="blogDet in blog.results" :key="blogDet.id">
       <div class="blog-box__inner">
         <div class="blog-box__image">
-          <img :src="blogDet.picture.crop" />
+          <img :src="blogDet.picture.crop" :alt="blogDet.title" :title="blogDet.title" />
         </div>
         <div class="blog-right-side-text">
           <div class="blog-title">
@@ -102,7 +102,6 @@ export default {
 
 .emphazised{
     border-bottom: 2px solid #56D9D4 ;
-    font-family: "larsseit-medium";
 }
 
 .blog-box__inner {
@@ -278,6 +277,7 @@ export default {
 @media (max-width: 576px) {
   .blog-box{
     position: unset;
+    margin-bottom: 100px;
   }
 
 
@@ -294,8 +294,8 @@ export default {
     font-size: 14px;
   }
   .blog-box {
-    flex: 0 0 70%;
-    max-width: 70%;
+    flex: 0 0 100%;
+    max-width: 80%;
   }
   .blog-title h2 {
     font-size: 16px;
@@ -303,8 +303,9 @@ export default {
   }
 
   .blog-right-side-text {
-    left: 103px;
+    left: 35%;
     top: 147px;
+    max-width: 87%;
     border-right: unset;
     padding: 0px 16px 17px 15px;
   }

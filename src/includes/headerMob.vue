@@ -294,8 +294,6 @@ export default {
 .emphazised {
   border-bottom: 2px solid #56d9d4 !important;
   transition: 0.3s;
-  margin-top: 2px;
-  font-family: "larsseit-medium";
 }
 .homeLinkActive{
   border-bottom: 2px solid #56d9d4 !important;

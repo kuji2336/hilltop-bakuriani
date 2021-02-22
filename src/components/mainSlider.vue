@@ -3,6 +3,8 @@
 <!-- main slider -->
   <div class="container-main-slider">
     <div class="container-main-slider__inner" id="sliderBox">
+      <!-- video box -->
+      <video-box></video-box>
       <swiper
         :slides-per-view="1"
         :space-between="20"
@@ -11,8 +13,6 @@
         effect="fade"
       >
         <swiper-slide v-for="sliderData in mainSliderDetails" :key="sliderData.id">
-          <!-- video box -->
-          <video-box></video-box>
           <div class="slider-box">
             <a :href="sliderData.link">
             <div class="slider-box__inner">
@@ -95,8 +95,6 @@ export default {
     /* toggle between video box */
     showVideo() {
       this.$store.commit("CheckvideoVisibility", false);
-      var video = document.getElementById("video");
-      video.play();
     },
     
     /* show navbar after scroll down slider image */
@@ -371,6 +369,11 @@ text-shadow: 0px 3px 6px #0000004D;
 @media (max-width: 576px) {
   .slider-main-title__inner p {
     font-size: 20px;
+}
+
+.services-wrapper{
+  position: relative;
+  top: -150px;
 }
 
 .slider-sub-title__inner p{

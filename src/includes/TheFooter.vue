@@ -23,7 +23,7 @@
                  </div>
                  <div class="map-side">
                      <div class="map-side__inner">
-                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2976.873748505368!2d43.5277645154367!3d41.744815981723505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d276e3d7e93%3A0xf8903b47b3b8245a!2sHilltop%20Bakuriani!5e0!3m2!1sen!2sge!4v1611684911288!5m2!1sen!2sge" width="600" height="780" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <iframe alt="Hilltop bakuriani" title="Hilltop bakuriani" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2976.8737485053575!2d43.52776451535683!3d41.74481598172373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d276e3d7e93%3A0xf8903b47b3b8245a!2sHilltop%20Bakuriani!5e0!3m2!1sru!2sge!4v1613820644002!5m2!1sru!2sge" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                      </div>
                  </div>
              </div>
@@ -72,6 +72,12 @@ export default {
      margin: 10px 0 16px 15px;
  }
 
+ .map-side__inner{
+     iframe{
+         height: 800px;
+     }
+ }
+
  .footer-section{
      display: flex;
      align-items: center;
@@ -89,7 +95,7 @@ export default {
     max-width: 77%;
     position: relative;
     left: -98px;
-    z-index: -1;
+    
  }
 
  .right-side{
@@ -110,6 +116,7 @@ export default {
      max-width: 28%;
      position: relative;
      left: 25px;
+     z-index: 9;
  }
 
  .addres-list{
@@ -169,7 +176,7 @@ export default {
   .map-side{
     flex: 0 0 74%;
     max-width: 74%;
-    left: -124px;
+    left: -128px;
  }
 
  .left-side{
@@ -232,7 +239,6 @@ export default {
 
 .map-side__inner iframe {
     height: 260px;
-    margin-bottom: 70px;
 }
 
 .addres-header--main {

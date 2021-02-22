@@ -4,7 +4,7 @@
         <div class="blog-container">
             <div class="blog-section--flex">
                 <div class="blog-left-side">
-                  <img :src="blog.picture.full_size" :title="blog.title">
+                  <img :src="blog.picture.full_size" :alt="blog.title" :title="blog.title">
                 </div>
                 <div class="blog-right-side">
                    <div class="arrow-back" @click="back"><img :src="require(`@/assets/img/arrow-left.svg`)"></div>
@@ -60,6 +60,7 @@ setup(){
            singleBlogRessult:[],
         }
     },
+
     methods:{
       RecieveSingleBlog(){
             var blogSlug = this.$route.params.slug
@@ -78,7 +79,7 @@ setup(){
            this.$router.push({name:"home"});
         },
        
-       //@desc change navbar position if route name contains blogdetails 
+       //@desc change navbar position fixed, if route name contains blogdetails 
        route(){
           if(this.$route.name === "blogdetail"){
             this.$store.commit("textCallback", true);
@@ -96,7 +97,7 @@ setup(){
     },
 
     computed:{
-        ...mapGetters(["translateLanguage"]),
+    ...mapGetters(["translateLanguage"]),
         
      addLanguageFontToTitle(){
        return{
@@ -164,7 +165,6 @@ setup(){
 
  .emphazised{
     border-bottom: 2px solid #56D9D4;
-    font-family: "larsseit-medium";
 }
 
  .wrapper-mob{

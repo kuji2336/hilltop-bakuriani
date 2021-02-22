@@ -1,129 +1,167 @@
 <template>
   <section class="container container--section" id="roomTypes">
     <div class="section-main-header">
-      <p :class="addLanguageFontTitle">{{t('section-headers.room-types', {}, {locale:translateLanguage})}}</p>
+      <p :class="addLanguageFontTitle">
+        {{ t("section-headers.room-types", {}, { locale: translateLanguage }) }}
+      </p>
     </div>
     <div class="room-types-row">
-      <div class="content-box-main" v-for="roomtype in roomTypesMainDetails" :key="roomtype.id">
+      <div
+        class="content-box-main"
+        v-for="roomtype in roomTypesMainDetails"
+        :key="roomtype.id"
+      >
         <div class="room-types-content">
           <div class="room-types-img">
-            <img :src="roomtype.primary_image.crop" />
+            <img :src="roomtype.primary_image.crop" :alt="roomtype.title" :title="roomtype.title" />
           </div>
           <div class="room-types-box">
             <div class="room-types__inner">
-              <div class="card-header"><p :class="addDynamicFontToBoxHeader">{{roomtype.title}}</p></div>
+              <div class="card-header">
+                <p :class="addDynamicFontToBoxHeader">{{ roomtype.title }}</p>
+              </div>
               <div class="room-types__details">
                 <div class="divider"></div>
                 <div class="detail-wrapper">
                   <div class="price">
-                    <p><span :class="addLanguageFontToRoomTypes">{{t('section-headers.room-price',{},{locale:translateLanguage})}}</span>: <span>${{roomtype.price}}</span></p>
+                    <p>
+                      <span :class="addLanguageFontToRoomTypes">{{t("section-headers.room-price",{},{ locale: translateLanguage })}}</span>: <span>${{ roomtype.price }}</span>
+                    </p>
                   </div>
                   <div class="person-quantity">
-                    <p><span :class="addLanguageFontToRoomTypes">{{t('section-headers.room-capacity',{},{locale:translateLanguage})}}</span>:<span>{{roomtype.human_capacity}}</span></p>
+                    <p>
+                      <span :class="addLanguageFontToRoomTypes">{{t("section-headers.room-capacity",{},{ locale: translateLanguage })}}</span>:<span>{{ roomtype.human_capacity }}</span>
+                    </p>
                   </div>
                 </div>
               </div>
               <div class="room-type-description">
-                <p class="description-article " :class="addDynamicFontToDescription" v-html="roomtype.description"></p>
+                <p
+                  class="description-article"
+                  :class="addDynamicFontToDescription"
+                  v-html="roomtype.description">
+                </p>
                 <div class="view-galery-btn">
-                  <p  @click="showGaleryModal(roomtype.images)"><router-link :class="addLanguageFontToseeBtn" :to="{name:'roomtype', params:{roomtypeslug:roomtype.slug},  query: { roomprice:roomtype.price}}">{{t('section-headers.view-galery',{},{locale:translateLanguage})}}</router-link></p>
+                  <p @click="showGaleryModal(roomtype.images)">
+                    <router-link
+                      :class="addLanguageFontToseeBtn"
+                      :to="{name: 'roomtype', params: { roomtypeslug: roomtype.slug },query: { roomprice: roomtype.price },}">
+                      {{t("section-headers.view-galery",{},{ locale: translateLanguage })}}
+                    </router-link>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="card-description-mob-on">
+          <div class="description-for-mob">
+            <p class="description-article-mob" :class="addDynamicFontToDescription" v-html="roomtype.description"></p>
+            <div class="see-galery-modal--mob">
+              <p @click="showGaleryModal(roomtype.images)">
+                <router-link
+                      :class="addLanguageFontToseeBtn"
+                      :to="{name: 'roomtype', params: { roomtypeslug: roomtype.slug },query: { roomprice: roomtype.price },}">
+                      {{t("section-headers.view-galery",{},{ locale: translateLanguage })}}
+                </router-link>
+               </p>
+            </div>
+          </div>
+        </div>
       </div>
-  <teleport to="body">
-    <galery-slider-modal  :images="modalData"></galery-slider-modal>
-   </teleport>
+      <teleport to="body">
+        <galery-slider-modal :images="modalData"></galery-slider-modal>
+      </teleport>
     </div>
   </section>
 </template>
 
 
 <script>
-import {useI18n} from 'vue-i18n'
+import { useI18n } from "vue-i18n";
 import galerySliderModal from "../includes/galerySliderModal";
-import {mapGetters, mapActions} from  "vuex"
+import { mapGetters, mapActions } from "vuex";
 export default {
-  components:{
-    galerySliderModal
-
-  },
-  
-  setup(){
-   const {t,locale} = useI18n();
-   return {t,locale}
+  components: {
+    galerySliderModal,
   },
 
-  data(){
-    return{
-      modalData:null,
-    }
+  setup() {
+    const { t, locale } = useI18n();
+    return { t, locale };
   },
-  methods:{
-    ...mapActions("room",["RecieveRoomTypesAPI"]),
-      showGaleryModal(modalSlides){
-      this.modalData = modalSlides
-      this.$store.commit("CheckgaleryModalVisibility", true)
+
+  data() {
+    return {
+      modalData: null,
+    };
+  },
+  methods: {
+    ...mapActions("room", ["RecieveRoomTypesAPI"]),
+    showGaleryModal( modalSlides ) {
+
+      this.modalData = modalSlides;
+
+      this.$store.commit("CheckgaleryModalVisibility", true);
+
+      document.getElementsByTagName("html")[0].style.overflow ="hidden"
     },
 
-    getdata(){
-      this.RecieveRoomTypesAPI()
-    }
-
+    getdata() {
+      this.RecieveRoomTypesAPI();
     },
-
-
-  computed:{
-    ...mapGetters("room",["roomTypesMainDetails"]),
-     ...mapGetters(["translateLanguage"]),
-
-     //@desc change font family depend on select dropdown value
-     addLanguageFontTitle(){
-       return{
-         'geofont-arial-caps': this.translateLanguage === "ka" || this.translateLanguage === "ru",
-         'eng-font-larrseit-light': this.translateLanguage === "en",
-
-       }
-     },
-
-     addLanguageFontToRoomTypes(){
-        return {
-          'geofont-mtavruli': this.translateLanguage === "ka" || this.translateLanguage === "ru",
-          'eng-larsseit-thin':this.translateLanguage === 'en'
-        }
-     },
-
-
-     addLanguageFontToseeBtn(){
-       return{
-         'geofont-arial-regular': this.translateLanguage === "ka" || this.translateLanguage === "ru",
-         'eng-font-larrseit-light':this.translateLanguage === "en",
-       }
-     },
-
-     addDynamicFontToDescription(){
-      return{
-         'bpg-nateli-reg': this.translateLanguage === "ka" || this.translateLanguage === "ru",
-         'larrseit-thin-italic':this.translateLanguage === "en",
-       }
-     },
-
-
-     addDynamicFontToBoxHeader(){
-        return{
-         'bpg-rioni-regular': this.translateLanguage === "ka" || this.translateLanguage === "ru",
-         'calson-medium':this.translateLanguage === "en",
-       }
-     }
   },
 
-  created(){
-    this.getdata()
-  }
-}
+  computed: {
+    ...mapGetters("room", ["roomTypesMainDetails"]),
+    ...mapGetters(["translateLanguage"]),
 
+    //@desc change font family depend on select dropdown value
+    addLanguageFontTitle() {
+      return {
+        "geofont-arial-caps":
+          this.translateLanguage === "ka" || this.translateLanguage === "ru",
+        "eng-font-larrseit-light": this.translateLanguage === "en",
+      };
+    },
+
+    addLanguageFontToRoomTypes() {
+      return {
+        "geofont-mtavruli":
+          this.translateLanguage === "ka" || this.translateLanguage === "ru",
+        "eng-larsseit-thin": this.translateLanguage === "en",
+      };
+    },
+
+    addLanguageFontToseeBtn() {
+      return {
+        "geofont-arial-regular":
+          this.translateLanguage === "ka" || this.translateLanguage === "ru",
+        "eng-font-larrseit-light": this.translateLanguage === "en",
+      };
+    },
+
+    addDynamicFontToDescription() {
+      return {
+        "bpg-nateli-reg":
+          this.translateLanguage === "ka" || this.translateLanguage === "ru",
+        "larrseit-thin-italic": this.translateLanguage === "en",
+      };
+    },
+
+    addDynamicFontToBoxHeader() {
+      return {
+        "bpg-rioni-regular":
+          this.translateLanguage === "ka" || this.translateLanguage === "ru",
+        "calson-medium": this.translateLanguage === "en",
+      };
+    },
+  },
+
+  created() {
+    this.getdata();
+  },
+};
 </script>
 
 
@@ -138,6 +176,9 @@ export default {
     text-transform: uppercase;
   }
 }
+
+
+
 .room-types-row {
   display: flex;
   margin-top: 160px;
@@ -145,7 +186,10 @@ export default {
   max-width: 1800px;
   width: 100%;
   margin: 0 auto;
- 
+}
+
+.card-description-mob-on{
+  display: none;
 }
 
 .room-types-box {
@@ -153,9 +197,8 @@ export default {
   width: 100%;
   background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
-  min-height: 300px;
+  height: 100%;
 }
-
 
 .room-types-content {
   display: flex;
@@ -163,6 +206,7 @@ export default {
   position: relative;
   margin-top: 60px;
   justify-content: flex-end;
+  height: 95%;
 }
 .room-types__inner {
   padding: 31px 30px 29px 134px;
@@ -171,18 +215,18 @@ export default {
 .price {
   padding-bottom: 11px;
   text-transform: uppercase;
-  p{
-    span:not(:first-child){
+  p {
+    span:not(:first-child) {
       font-family: "larsseit-medium";
       margin-left: 5px;
     }
   }
 }
 
-.person-quantity{
+.person-quantity {
   text-transform: uppercase;
-  p{
-    span:not(:first-child){
+  p {
+    span:not(:first-child) {
       font-family: "larsseit-medium";
       margin-left: 5px;
     }
@@ -211,7 +255,6 @@ export default {
     color: #464646;
     padding-left: 26px;
     max-height: 56px;
-
   }
 }
 
@@ -227,34 +270,28 @@ export default {
   p {
     font-size: 15px !important;
     max-width: 120px;
-    a{
+    a {
       text-decoration: none;
       text-transform: capitalize;
       border-bottom: 2px solid rgba(245, 222, 179, 0);
-      transition: .3;
+      transition: 0.3;
       color: #464646;
-      font-family: 'larsseit-light';
+      font-family: "larsseit-light";
     }
   }
 }
 
-.view-galery-btn p a:hover{
+.view-galery-btn p a:hover {
   border-bottom: 2px solid #56d9d4;
-   transition: .3;
+  transition: 0.3;
 }
 
 .room-type-description {
   padding-left: 28px;
-  .description-article{
+  .description-article {
     font-size: 18px;
+    line-height: 23px;
     text-align: left;
-    display: -webkit-box;
-    line-height: 24px;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-height: 72px;
-    text-overflow: ellipsis;
     color: #464646;
   }
 }
@@ -268,8 +305,8 @@ export default {
   }
 }
 
-.router-link-active{
-  border-bottom: 2px solid #56D9D4;
+.router-link-active {
+  border-bottom: 2px solid #56d9d4;
 }
 
 .content-box-main {
@@ -300,32 +337,31 @@ export default {
 }
 
 @media (max-width: 1600px) {
-
-  .view-galery-btn{
+  .view-galery-btn {
     padding: 3px 0 0px 0;
-}
+  }
 
-.card-header,
-.room-types__details {
-  padding-bottom: 12px;
-  padding-top: 12px;
-}
+  .card-header,
+  .room-types__details {
+    padding-bottom: 12px;
+    padding-top: 12px;
+  }
 
-.room-type-description .description-article{
+  .room-type-description .description-article {
     font-size: 16px;
-}
-.section-main-header p{
-  font-size: 25px;
-}
+  }
+  .section-main-header p {
+    font-size: 25px;
+  }
 
-.divider{
+  .divider {
     margin-left: 53px;
     height: 67px;
-}
+  }
 
-.card-header p{
+  .card-header p {
     font-size: 20px;
-}
+  }
   .room-types-row {
     display: flex;
     margin-top: 160px;
@@ -354,12 +390,6 @@ export default {
     padding-bottom: 15px;
   }
 
-
-
- .room-types-box{
-    max-height: 320px;
- }
-
   .room-types-img {
     position: absolute;
     height: 150px;
@@ -378,13 +408,13 @@ export default {
   }
 
   .room-types-img {
-  left: 5%;
-  height: 175px;
-  img {
-    width: 70%;
-    object-fit: cover;
+    left: 5%;
+    height: 175px;
+    img {
+      width: 70%;
+      object-fit: cover;
+    }
   }
-}
 }
 
 @media (max-width: 1400px) {
@@ -409,8 +439,6 @@ export default {
   .room-types-row {
     max-width: 1320px;
   }
-
-
 }
 
 @media (max-width: 1300px) {
@@ -422,7 +450,7 @@ export default {
     position: absolute;
     height: 140px;
     left: -3%;
-    img{
+    img {
       object-fit: contain;
       width: 100%;
     }
@@ -502,16 +530,61 @@ export default {
 }
 
 @media (max-width: 576px) {
-
-  .room-type-description .description-article{
-    font-size: 14px;
-    max-height: unset;
-    min-height: unset;
-    -webkit-line-clamp: 4;
-    line-height: 20px;
-  }
   .room-types-box {
     max-width: unset;
+    height: auto;
+  }
+
+  .card-description-mob-on{
+   display: block;
+}
+
+  
+.room-types-content {
+
+  margin-top: 20px;
+  height: unset;
+}
+
+  .card-description-mob-on{
+    position: relative;
+    top: -31px;
+    max-width: 81%;
+    left: 17%;
+  }
+
+  .card-description-mob-on{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+  }
+
+  .see-galery-modal--mob{
+    p{
+      a{
+        text-decoration: none;
+        color: #464646;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .see-galery-modal--mob{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+  }
+
+  .see-galery-modal--mob p a:hover{
+    border-bottom: 2px solid #56D9D4;
+  }
+
+  .description-for-mob{
+    padding: 20px 16px 14px 16px;
+    p{
+      font-size: 14px;
+      color: #464646;
+      line-height: 20px;
+    }
   }
 
   .room-types-content {
@@ -522,17 +595,13 @@ export default {
     max-width: 100%;
   }
 
-    .room-types-row > .content-box-main:first-child > .room-types-content{
+  .room-types-row > .content-box-main:first-child > .room-types-content {
     margin-top: -20px;
     padding-top: 0;
   }
 
-  .room-types-content {
-    padding: 0 11px;
-    margin-top: 66px;
-    height: 220px;
-    position: relative;
-  }
+  
+
 
   .container {
     margin: 0 10px;
@@ -551,21 +620,18 @@ export default {
 
   .room-types-img {
     position: unset;
-    height: 122px;
-    left: -11%;
+    height: 120px;
+    margin-left: 10px;
+    img{
+      object-fit: cover;
+    }
   }
   .room-types__inner {
     padding: unset;
   }
 
   .room-type-description {
-    max-width: 89%;
-    position: absolute;
-    background-color: white;
-    padding: 20px 15px 0 16px;
-    left: 55px;
-    top: 146px;
-    box-shadow: 0px 3px 6px #00000029;
+    display: none;
   }
 
   .card-header p {
@@ -576,9 +642,8 @@ export default {
     max-height: 35px;
   }
 
-  .card-header{
+  .card-header {
     padding-bottom: 20px;
-    
   }
 
   .divider {
@@ -591,10 +656,6 @@ export default {
     top: -24px;
     padding-top: 21px;
     padding-bottom: 23px;
-  }
-
-  .room-type-description p {
-    font-size: 14px;
   }
 
   .view-galery-btn {
@@ -613,9 +674,7 @@ export default {
   }
 
   .section-main-header {
-    margin-top: unset;
-    position: relative;
-    top: 14px;
+    padding: 16px 0 28px 0;
   }
 
   .view-galery-btn {
@@ -629,9 +688,9 @@ export default {
   }
 }
 
-@media(max-width:1600px){
+@media (max-width: 1600px) {
   .section-main-header {
-  margin-top: 50px;
-}
+    margin-top: 50px;
+  }
 }
 </style>

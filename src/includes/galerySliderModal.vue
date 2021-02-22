@@ -2,7 +2,9 @@
 <div class="modal"  @focus="handleFocus"  tabindex="0"  :class="{'isVisiableModal':galeryModalIsVisible}" :id="id" >
   <!-- Modal content -->
   <div class="modal-content" id="contentModal" >
-    <div class="close-modal--btn" @click="closeGalleryModal"> <img :src="require(`@/assets/img/x-btn.svg`)" /></div>
+    <div class="close-modal--btn" @click="closeGalleryModal"> 
+      <img :src="require(`@/assets/img/x-btn.svg`)" />
+    </div>
         <swiper
         :slides-per-view="1"
         :space-between="20"
@@ -10,7 +12,7 @@
       >
         <swiper-slide @click="closeGalleryModal" v-for="image in images" :key="image.id">
             <div class="modal-slider-image">
-               <img  :src="image.image.full_size" />
+               <img  :src="image.image.full_size"  />
             </div>
         </swiper-slide>
       </swiper>
@@ -45,12 +47,14 @@ export default {
         closeGalleryModal(){
           this.$router.push('/')
           this.$store.commit("CheckgaleryModalVisibility", false)
+          document.getElementsByTagName("html")[0].style.overflow ="auto"
         },
 
         //@desc hide modal on focus outside & clean path
         handleFocus() {
             this.$store.commit("CheckgaleryModalVisibility", false)
             this.$router.push('/')
+            document.getElementsByTagName("html")[0].style.overflow ="auto"
         },
 
     }
@@ -62,8 +66,8 @@ export default {
 
 .close-modal--btn{
     position: absolute;
-    right: 0;
-    top: 8px;
+    right: 5px;
+    top: -30px; 
     z-index: 1111111111;
     cursor: pointer;
 }
@@ -85,11 +89,14 @@ export default {
 }
 
 .modal-slider-image{
-  height: 800px;
+    display: flex;
+    justify-content: center;
+    height: 800px;
   img{
       height: 100%;
       width: 100%;
-      object-fit:contain;
+      
+      object-fit:cover;
   }
 }
 

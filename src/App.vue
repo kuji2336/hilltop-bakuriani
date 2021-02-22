@@ -172,6 +172,10 @@ body{
   position: relative;
 }
 
+.disable-scroll {
+  overflow: hidden !important;
+}
+
 
 .img-fluid{
   width: 100%;
