@@ -61,6 +61,7 @@ setup(){
         }
     },
 
+
     methods:{
       RecieveSingleBlog(){
             var blogSlug = this.$route.params.slug
@@ -171,6 +172,7 @@ setup(){
      display: flex;
      justify-content: space-between;
      margin: 0 20px;
+     padding-bottom: 35px;
  }
 
  .sub-header--flex{
@@ -203,6 +205,7 @@ setup(){
  .blog-left-side{
      flex: 0 0 70%;
      max-width: 70%;
+     height: 100vh;
  }
 
  .blog-right-side{
@@ -224,7 +227,7 @@ setup(){
     max-width: 755px;
     width: 100%;
     right: 70px;
-    max-height: 400px;
+    max-height: 500px;
     overflow: auto;
     scroll-behavior: smooth;
     p{
@@ -287,18 +290,17 @@ setup(){
  .sub-header--flex{
      margin-bottom: 20px;
      margin-left: 20px;
-     max-width: 600px;
+     max-width: 85%;
      width: 100%;
  }
 
  @media(max-width:1900px){
-      .blog-left-side{
-     height: 888px;
- }
+
 
   .blog-left-side{
      flex: 0 0 60%;
      max-width: 60%;
+     height: 100vh;
  }
 
  .blog-right-side{
@@ -309,9 +311,6 @@ setup(){
 
 
  @media(max-width:1600px){
-     .blog-left-side{
-     height: 600px;
- }
 
 .arrow-back {
     margin: 20px 0 29px 22px;
@@ -334,9 +333,7 @@ setup(){
     font-size: 17px;
 }
 
-.sub-header--flex {
-    max-width: 490px;
-}
+
 
  .inner-blog-section{
     top: 80px;
@@ -348,6 +345,10 @@ setup(){
  @media(max-width:768px){
      .blog-section--flex{
          flex-wrap: wrap;
+     }
+
+     .blog-left-side{
+         height: unset;
      }
 
      .sub-header--flex--mob{

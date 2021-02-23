@@ -129,6 +129,7 @@ export default {
   overflow: hidden;
   position: absolute;
   background-color: #FFFFFF;
+  box-shadow: 0px 3px 6px #20797633;
   right: 3px;
   width: 50px;
   text-align: center;
@@ -179,7 +180,7 @@ export default {
 
 @media(max-width:1600px){
   .items {
-  right: 10px;
+  right: 2px;
   width: 50px;
 }
 

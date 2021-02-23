@@ -65,11 +65,11 @@ export default {
 <style lang="scss">
 
 .close-modal--btn{
-    position: absolute;
-    right: 5px;
-    top: -30px; 
     z-index: 1111111111;
     cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    padding: 9px 0;
 }
 /* The Modal (background) */
 .modal {
@@ -107,12 +107,9 @@ export default {
 
 /* Modal Content */
 .modal-content {
-  margin: auto;
+  margin: 0 auto;
   max-width: 1260px;
   width: 100%;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 50%);
 }
 
 /* The Close Button */
@@ -200,10 +197,14 @@ export default {
 
 
 @media(max-width:1600px){
-   .modal-content {
-  transform: translate(-50%, 0%);
-} 
 
+  .modal {
+  padding-top: 70px;
+}
+.close-modal--btn{
+  max-width: 850px;
+  margin: 0 auto;
+}
 .modal-content .swiper-button-next {
     background-size: cover;
     right: 18%;
@@ -229,10 +230,7 @@ export default {
     height: 26px !important;
     width: 21px !important;
 }
-.close-modal--btn {
-    right: 204px;
-    top: -22px;
-}
+
 
 .modal-slider-image{
   height: 500px;
@@ -250,14 +248,6 @@ export default {
   height: 200px;
 }
 
-.close-modal--btn {
-    top: -19px;
-}
-
-
-.close-modal--btn {
-    right: 0;
-}
 }
 
 

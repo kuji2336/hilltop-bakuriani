@@ -1,7 +1,7 @@
 <template>
-     <section class="footer-navigation" id="contact">
+     <section class="footer-navigation" v-if="this.$route.name !=='blogdetail'" id="contact">
          <footer>
-             <div class="footer-section costum-flex"  v-show="this.$route.name !=='blogdetail'">
+             <div class="footer-section costum-flex" >
                  <div class="addres-side">
                      <div class="addres-header--main"><h1 :class="addLanguageFontFooter">{{t('contact', {}, {locale:translateLanguage})}}</h1></div>
                      <div class="addres-side__inner">

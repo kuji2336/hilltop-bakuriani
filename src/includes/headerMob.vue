@@ -65,14 +65,6 @@
           ></drop-select>
         </div>
       </div>
-      <div class="contact-material-icons--right">
-        <a :href="`tel:${contactInfo.phone}`"
-          ><img :src="require(`@/assets/img/iconmob.png`)" class="img-fluid"
-        /></a>
-        <a href="https://www.facebook.com/bakurianihilltop"
-          ><img :src="require(`@/assets/img/facebookmob.png`)" class="img-fluid"
-        /></a>
-      </div>
       <div class="navigation-lists-direction--column">
         <div class="navigation-lists--inner">
           <li>
@@ -119,6 +111,11 @@
           </li>
         </div>
       </div>
+    </div>
+    <div class="contact-material-icons--right">
+      <a href="https://www.facebook.com/bakurianihilltop">
+          <img :src="require(`@/assets/img/facebookmob.png`)" class="img-fluid"/>
+      </a>
     </div>
   </div>
 </template>
@@ -319,8 +316,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  right: 0;
-  top: 64px;
+  bottom: 12px;
   img {
     height: 20px;
     width: 20px !important;
@@ -354,6 +350,7 @@ export default {
   left: -100%;
   transition: 0.4s;
   height: 100%;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
 }
 
 .slideLeft {

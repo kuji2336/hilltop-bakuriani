@@ -7,7 +7,6 @@ import { createI18n } from 'vue-i18n'
 import geo from "./translations/geo.json"
 import eng from "./translations/eng.json"
 import rus from "./translations/rus.json"
-
 const i18n = createI18n({
     messages:{
         ka:geo,

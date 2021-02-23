@@ -251,7 +251,7 @@ export default {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 30px;
+    font-size: 23px;
     color: #464646;
     padding-left: 26px;
     max-height: 56px;

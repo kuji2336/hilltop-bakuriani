@@ -291,9 +291,8 @@ text-shadow: 0px 3px 6px #0000004D;
 .video-icon {
   img {
     position: absolute;
-    bottom: 124px;
+    bottom: 141px;
     right: 50px;
-    width: 63;
     cursor: pointer;
   }
 }
@@ -306,6 +305,12 @@ text-shadow: 0px 3px 6px #0000004D;
   .slider-text-wrapper {
     bottom: 50px;
   }
+
+  .video-icon {
+  img {
+    bottom: 124px;
+  }
+}
   
  .video-icon {
   img {
